@@ -5,9 +5,9 @@ document.getElementById('add-sppiner').style.display = displayStyle;
 const onOffResult = displayStyle => {
 document.getElementById('country-container').style.display = displayStyle;
 }
-const onOffError = displayStyle => {
-document.getElementById('error').style.display = displayStyle;
-}
+
+
+
 
 
 const loadResult = () =>{
@@ -26,7 +26,10 @@ const url =(`https://restcountries.eu/rest/v2/name/${searchText}`)
 fetch(url)
 .then(res => res.json())
 .then(data => DisplayCountries(data))
-
+.catch(error =>{
+  onOff('none')
+  document.getElementById('error').innerHTML = `<h2 class =" text-danger text-center"> some went is wrong try again later !!! </h2>`
+})
 }
 
 
@@ -39,10 +42,11 @@ data.forEach(country =>{
 
 const div = document.createElement('div');
 div.classList.add('col')
+
 div.innerHTML = `
 <div  >
 <img width= 100% src="${country.flag}" alt="img" srcset="">
- <h2> ${country.name} </h2>
+ <h2  > ${country.name} </h2>
  <button onclick="loadDetails('${country.name}')" > Show Details </button>
 </div>
 `

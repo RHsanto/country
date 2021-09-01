@@ -12,7 +12,9 @@
 
   <style>
 #country-container{
-width: 40%;
+display: grid !important;
+grid-template-columns: repeat(4,1fr);
+
 }
 
     .col{
@@ -64,12 +66,14 @@ display: none;
  <h3> Currencies symbol :  </h3>
 <hr class="border-dark">
   </div>
-  <div id="country-container" class="row">
+  <div id="country-container">
    
   </div>
- <h2 id="error" class=" d-none text-danger text-center">
-   some went is wrong try again later !!
- </h2>
+
+
+ <div id="error">
+
+ </div>
  
   <script src="api.js"></script>
 </body>
